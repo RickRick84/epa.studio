@@ -12,7 +12,7 @@ export default function PokerBet() {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    handleResize(); // Inicial
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -25,11 +25,12 @@ export default function PokerBet() {
         backgroundColor: 'black',
         height: '100vh',
         width: '100vw',
-        position: 'relative',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
+        position: 'relative',
       }}
     >
       {/* Botón HOME */}
@@ -41,7 +42,7 @@ export default function PokerBet() {
           position: 'absolute',
           top: '12px',
           left: '12px',
-          width: '42px',
+          width: '72px', // MUCHO más grande como usted solicitó
           opacity: 0.6,
           cursor: 'pointer',
           zIndex: 10,
@@ -50,14 +51,15 @@ export default function PokerBet() {
         onMouseOut={(e) => (e.currentTarget.style.opacity = 0.6)}
       />
 
-      {/* Imagen dinámica */}
+      {/* Imagen centrada absolutamente */}
       <img
         src={imageToShow}
         alt="Poker Bet"
         style={{
-          width: '100%',
-          height: 'auto',
           maxHeight: '100%',
+          maxWidth: '100%',
+          height: 'auto',
+          width: 'auto',
           objectFit: 'contain',
           objectPosition: 'center',
         }}
