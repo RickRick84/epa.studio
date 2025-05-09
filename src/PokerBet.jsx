@@ -12,7 +12,7 @@ export default function PokerBet() {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    handleResize(); // Ejecutar al cargar
+    handleResize(); // Inicial
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -20,16 +20,19 @@ export default function PokerBet() {
   const imageToShow = isMobile ? pokerMobile : pokerDesktop;
 
   return (
-    <div style={{
-      backgroundColor: 'black',
-      height: '100vh',
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      position: 'relative',
-    }}>
-      {/* Botón Home */}
+    <div
+      style={{
+        backgroundColor: 'black',
+        height: '100vh',
+        width: '100vw',
+        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Botón HOME */}
       <img
         src={homeIcon}
         alt="Inicio"
@@ -38,20 +41,26 @@ export default function PokerBet() {
           position: 'absolute',
           top: '12px',
           left: '12px',
-          width: '32px',
+          width: '42px',
           opacity: 0.6,
           cursor: 'pointer',
           zIndex: 10,
         }}
-        onMouseOver={(e) => e.currentTarget.style.opacity = 1}
-        onMouseOut={(e) => e.currentTarget.style.opacity = 0.6}
+        onMouseOver={(e) => (e.currentTarget.style.opacity = 1)}
+        onMouseOut={(e) => (e.currentTarget.style.opacity = 0.6)}
       />
 
       {/* Imagen dinámica */}
       <img
         src={imageToShow}
         alt="Poker Bet"
-        style={{ maxWidth: '100%', maxHeight: '100%' }}
+        style={{
+          width: '100%',
+          height: 'auto',
+          maxHeight: '100%',
+          objectFit: 'contain',
+          objectPosition: 'center',
+        }}
       />
     </div>
   );
