@@ -37,10 +37,12 @@ export default function PokerBet() {
   alt="Inicio"
   onClick={() => navigate('/')}
   style={{
-    position: 'fixed', // ← evita que interfiera con layout
+    position: 'relative',
+    height: '100vh',
+    overflow: 'hidden',
     top: '12px',
     left: '12px',
-    width: isMobile ? '80px' : '60px',
+    width: isMobile ? '68px' : '60px',
     zIndex: 9999,       // Muy por encima de todo
     cursor: 'pointer',
     opacity: 0.8,
