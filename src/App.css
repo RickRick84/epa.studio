@@ -9,7 +9,7 @@
 }
 
 .main-logo {
-  width: 200px;
+  width: 300px;
   z-index: 1;
   animation: pulse-subtle 4s ease-in-out infinite;
 }
@@ -49,3 +49,18 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 768px) {
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  #root {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
