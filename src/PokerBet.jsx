@@ -20,46 +20,55 @@ export default function PokerBet() {
   const imageToShow = isMobile ? pokerMobile : pokerDesktop;
 
   return (
-    <div style={{
+  <div
+    style={{
       backgroundColor: 'black',
-      width: '100%',
-      minHeight: '100vh',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
+      width: '100vw',
+      height: '100vh',
+      overflow: 'hidden',
+      margin: 0,
+      padding: 0,
       position: 'relative',
-      padding: '16px',
-      boxSizing: 'border-box',
-    }}>
-      {/* Botón Home */}
-      <img
-        src={homeIcon}
-        alt="Inicio"
-        onClick={() => navigate('/')}
-        style={{
-          position: 'absolute',
-          top: '12px',
-          left: '12px',
-          width: '72px',
-          opacity: 0.6,
-          cursor: 'pointer',
-          zIndex: 10,
-        }}
-        onMouseOver={(e) => (e.currentTarget.style.opacity = 1)}
-        onMouseOut={(e) => (e.currentTarget.style.opacity = 0.6)}
-      />
+    }}
+  >
+    {/* Botón Home */}
+    <img
+      src={homeIcon}
+      alt="Inicio"
+      onClick={() => navigate('/')}
+      style={{
+        position: 'absolute',
+        top: 12,
+        left: 12,
+        width: '70px',
+        zIndex: 10,
+        cursor: 'pointer',
+        opacity: 0.8,
+        transition: 'opacity 0.2s',
+      }}
+      onMouseOver={(e) => (e.currentTarget.style.opacity = 1)}
+      onMouseOut={(e) => (e.currentTarget.style.opacity = 0.8)}
+    />
 
-      {/* Imagen controlada */}
-      <img
-        src={imageToShow}
-        alt="Poker Bet"
-        style={{
-          maxWidth: '100%',
-          height: 'auto',
-          display: 'block',
-          margin: '0 auto',
-        }}
-      />
-    </div>
+    {/* Imagen central */}
+    <img
+      src={imageToShow}
+      alt="Poker Bet"
+      style={{
+        maxWidth: '100%',
+        maxHeight: '100%',
+        width: 'auto',
+        height: 'auto',
+        objectFit: 'contain',
+        display: 'block',
+        margin: 'auto',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+      }}
+    />
+  </div>
   );
 }
