@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import pokerDesktop from '/pokerbet_app_page_.png';
 import pokerMobile from '/pokerbet_app_page_mobile.png';
 import homeIcon from '/epa_home_button_.png';
-import { useNavigate } from 'react-router-dom';
 
-function PokerBet() {
+export default function PokerBet() {
   const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
 
@@ -20,7 +20,18 @@ function PokerBet() {
   const imageToShow = isMobile ? pokerMobile : pokerDesktop;
 
   return (
-    <div className="pokerbet-container">
+    <div style={{
+      backgroundColor: 'black',
+      width: '100%',
+      minHeight: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      position: 'relative',
+      padding: '16px',
+      boxSizing: 'border-box',
+    }}>
+      {/* Botón Home */}
       <img
         src={homeIcon}
         alt="Inicio"
@@ -37,13 +48,18 @@ function PokerBet() {
         onMouseOver={(e) => (e.currentTarget.style.opacity = 1)}
         onMouseOut={(e) => (e.currentTarget.style.opacity = 0.6)}
       />
+
+      {/* Imagen controlada */}
       <img
         src={imageToShow}
         alt="Poker Bet"
-        className="pokerbet-image"
+        style={{
+          maxWidth: '100%',
+          height: 'auto',
+          display: 'block',
+          margin: '0 auto',
+        }}
       />
     </div>
   );
 }
-
-export default PokerBet;
