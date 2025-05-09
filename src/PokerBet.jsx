@@ -33,21 +33,22 @@ export default function PokerBet() {
   >
     {/* Botón Home */}
     <img
-      src={homeIcon}
-      alt="Inicio"
-      onClick={() => navigate('/')}
-      style={{
-        position: 'absolute',
-        top: 12,
-        left: 12,
-        width: '70px',
-        zIndex: 10,
-        cursor: 'pointer',
-        opacity: 0.8,
-        transition: 'opacity 0.2s',
-      }}
-      onMouseOver={(e) => (e.currentTarget.style.opacity = 1)}
-      onMouseOut={(e) => (e.currentTarget.style.opacity = 0.8)}
+  src={homeIcon}
+  alt="Inicio"
+  onClick={() => navigate('/')}
+  style={{
+    position: 'fixed', // ← evita que interfiera con layout
+    top: '12px',
+    left: '12px',
+    width: isMobile ? '80px' : '60px',
+    zIndex: 9999,       // Muy por encima de todo
+    cursor: 'pointer',
+    opacity: 0.8,
+    transition: 'opacity 0.2s',
+    pointerEvents: 'auto',
+  }}
+  onMouseOver={(e) => (e.currentTarget.style.opacity = 1)}
+  onMouseOut={(e) => (e.currentTarget.style.opacity = 0.8)}
     />
 
     {/* Imagen central */}
