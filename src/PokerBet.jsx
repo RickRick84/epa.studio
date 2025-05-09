@@ -1,77 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import pokerDesktop from '/pokerbet_app_page_.png';
-import pokerMobile from '/pokerbet_app_page_mobile.png';
 import homeIcon from '/epa_home_button_.png';
+import mobileImg from '/pokerbet_app_page_mobile.png';
+import desktopImg from '/pokerbet_app_page_.png';
 
 export default function PokerBet() {
-  const [isMobile, setIsMobile] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const imageToShow = isMobile ? pokerMobile : pokerDesktop;
+  const isMobile = window.innerWidth < 768;
+  const imageToShow = isMobile ? mobileImg : desktopImg;
 
   return (
-  <div
-    style={{
-      backgroundColor: 'black',
-      width: '100vw',
-      height: '100vh',
-      overflow: 'hidden',
-      margin: 0,
-      padding: 0,
-      position: 'relative',
-    }}
-  >
-    {/* Botón Home */}
-    <img
-  src={homeIcon}
-  alt="Inicio"
-  onClick={() => navigate('/')}
-  style={{
-    position: 'relative',
-    height: '100vh',
-    overflow: 'hidden',
-    top: '12px',
-    left: '12px',
-    width: isMobile ? '68px' : '60px',
-    zIndex: 9999,       // Muy por encima de todo
-    cursor: 'pointer',
-    opacity: 0.8,
-    transition: 'opacity 0.2s',
-    pointerEvents: 'auto',
-  }}
-  onMouseOver={(e) => (e.currentTarget.style.opacity = 1)}
-  onMouseOut={(e) => (e.currentTarget.style.opacity = 0.8)}
-    />
+    <div className="pokerbet-wrapper">
+      {/* Imagen de fondo */}
+      <img
+        src={imageToShow}
+        alt="Poker Bet"
+        className="pokerbet-background"
+      />
 
-    {/* Imagen central */}
-    <img
-      src={imageToShow}
-      alt="Poker Bet"
-      style={{
-        maxWidth: '100%',
-        maxHeight: '100%',
-        width: 'auto',
-        height: 'auto',
-        objectFit: 'contain',
-        display: 'block',
-        margin: 'auto',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-      }}
-    />
-  </div>
+      {/* Ícono HOME */}
+      <img
+        src={homeIcon}
+        alt="Inicio"
+        onClick={() => navigate('/')}
+        className="pokerbet-home"
+      />
+    </div>
   );
 }

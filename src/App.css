@@ -50,6 +50,37 @@
   }
 }
 
+.pokerbet-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: black;
+}
+
+.pokerbet-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.pokerbet-home {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 60px;
+  z-index: 9999;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.pokerbet-home:hover {
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
   body, html {
     margin: 0;
@@ -63,4 +94,5 @@
     overflow: hidden;
   }
 }
+
 
